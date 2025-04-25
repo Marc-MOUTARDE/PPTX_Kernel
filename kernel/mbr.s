@@ -14,13 +14,13 @@ _start:
     mov %ax, %ss
     mov $0x7c00, %sp
 
-    ljmp $0x00, $0x7c36
+    ljmp $0x00, $start
 start:
     in $0x92, %al
     or $2, %al
     out %al, $0x92
 
-    lgdt (0x7c67)
+    lgdt (gdt_ptr)
 
     mov %cr0, %eax
     or $1, %eax
@@ -31,10 +31,10 @@ start:
     mov %ax, %es
     mov %ax, %fs
     mov %ax, %gs
-    // mov %ax, %ss
+    mov %ax, %ss
 
     cli
-    ljmp $0x08, $0x7c5c
+    ljmp $0x08, $entry32
     .code32
 
 entry32:

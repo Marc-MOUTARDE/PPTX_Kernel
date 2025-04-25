@@ -1,0 +1,10 @@
+*.o
+*.pptx
+*.xml
+ppt/
+docProps/
+_rels/
+Info
+Info.tmp
+*.asm
+*.txt
